@@ -13,6 +13,8 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.16.3",
+    "joi": "^13.7.0",
+    "monk": "^6.0.6",
     "volleyball": "^1.5.1"
   },
   "devDependencies": {
