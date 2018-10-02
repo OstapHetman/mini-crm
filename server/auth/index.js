@@ -10,7 +10,7 @@ const router = express.Router()
 
 const schema = Joi.object().keys({
   username: Joi.string().regex(/(^[a-zA-z0-9_]+$)/).min(2).max(30).required(),
-  password: Joi.string().min(8).required(),
+  password: Joi.string().trim().min(8).required(),
 });
 
 // Any route in here is pre-pended with /auth
@@ -37,7 +37,7 @@ router.post('/signup', (req, res, next) => {
       } else {
         // hash the password
         // insert user with hash password
-        bcrypt.hash(req.body.password, 12).then(hashedPassword => {
+        bcrypt.hash(req.body.password.trim(), 12).then(hashedPassword => {
           const newUser = {
             username: req.body.username,
             password: hashedPassword

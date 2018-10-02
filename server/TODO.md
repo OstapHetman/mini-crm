@@ -5,4 +5,6 @@
   * [x] Validate required fields
   * [x] Check if username is unique
   * [x] Hash password with bcrypt
-  * [x] Isert into db   
+  * [x] Isert into db  
+* [x] Create a Landing Page
+* [x] Link to Sign Up Page   
