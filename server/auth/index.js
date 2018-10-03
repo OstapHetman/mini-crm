@@ -10,6 +10,7 @@ const router = express.Router()
 
 const schema = Joi.object().keys({
   username: Joi.string().regex(/(^[a-zA-z0-9_]+$)/).min(2).max(30).required(),
+  fullName: Joi.string().required(),
   password: Joi.string().trim().min(8).required(),
 });
 
@@ -32,6 +33,7 @@ router.post('/signup', (req, res, next) => {
       if (user) {
         // there is already a user in db with this username
         const error = new Error('Please choose another one username')
+        res.status(409)
         next(error)
 
       } else {
@@ -40,6 +42,7 @@ router.post('/signup', (req, res, next) => {
         bcrypt.hash(req.body.password.trim(), 12).then(hashedPassword => {
           const newUser = {
             username: req.body.username,
+            fullName: req.body.fullName,
             password: hashedPassword
           }
           users.insert(newUser).then(insertedUser => {
@@ -50,6 +53,7 @@ router.post('/signup', (req, res, next) => {
       }
     })
   } else {
+    res.status(422)
     next(result.error)
   }
 })
