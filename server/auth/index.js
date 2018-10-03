@@ -58,4 +58,33 @@ router.post('/signup', (req, res, next) => {
   }
 })
 
+router.post('/signin', (req, res, next) => {
+  let schema;
+  const result = Joi.validate(req.body, schema = Joi.object().keys({
+    username: Joi.string().regex(/(^[a-zA-z0-9_]+$)/).min(2).max(30).required(),
+    password: Joi.string().trim().min(8).required(),
+  }));
+
+  if (result.error === null) {
+    users.findOne({
+      username: req.body.username
+    }).then(user => {
+      if (user) {
+        // found user in db and compare password
+        bcrypt.compare(req.body.password, user.password).then(result => {
+          res.json({ result })
+        })
+      } else {
+        res.status(422)
+        const error = new Error('Unable to signin')
+        next(error)
+      }
+    })
+  } else {
+    res.status(422);
+    const error = new Error('Unable to signin');
+    next(error)
+  }
+})
+
 module.exports = router;
