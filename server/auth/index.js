@@ -1,6 +1,9 @@
 const express = require('express');
 const Joi = require('joi');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+require('dotenv').config();
 
 const db = require('../db/connection');
 const users = db.get('users');
@@ -58,6 +61,12 @@ router.post('/signup', (req, res, next) => {
   }
 })
 
+function respondError422(res, next) {
+  res.status(422)
+  const error = new Error('Login failed; Invalid Username or Password')
+  next(error)
+}
+
 router.post('/signin', (req, res, next) => {
   let schema;
   const result = Joi.validate(req.body, schema = Joi.object().keys({
@@ -72,18 +81,31 @@ router.post('/signin', (req, res, next) => {
       if (user) {
         // found user in db and compare password
         bcrypt.compare(req.body.password, user.password).then(result => {
-          res.json({ result })
+          if (result) {
+            // the right password
+            const payload = {
+              _id: user._id,
+              username: user.username
+            };
+            jwt.sign(payload, process.env.TOKEN_SECRET, {
+              expiresIn: '1d'
+            }, (err, token) => {
+              if (err) {
+                respondError422(res, next)
+              } else {
+                res.json({ token })
+              }
+            })
+          } else {
+            respondError422(res, next)
+          }
         })
       } else {
-        res.status(422)
-        const error = new Error('Unable to signin')
-        next(error)
+        respondError422(res, next)
       }
     })
   } else {
-    res.status(422);
-    const error = new Error('Unable to signin');
-    next(error)
+    respondError422(res, next)
   }
 })
 

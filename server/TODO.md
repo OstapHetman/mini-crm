@@ -18,3 +18,5 @@
   * [x] Validate the user
   * [x] Check if username in db 
     * [x] Compare password with hashed in db 
+    * [x] Create and sign a JWT
+      * [x] Respond with JWT 
