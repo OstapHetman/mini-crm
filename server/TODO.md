@@ -16,18 +16,24 @@
   * [x] Display errors
     * [x]  If succesful sign up redirect to login page
 
-* [] Create Sign In Page
+* [x] Create Sign In Page
   * [x] Create Form
   * [x] Validate username 
   * [x] Validate password 
   * [x] Display errors
     * [x]  If succesful sign
-      * [] Store token lo localStorage
-      * [] Redirect to "dashboard"
+      * [x] Store token lo localStorage
+      * [x] Redirect to "dashboard"
     * 
-* [] Login user with POST /auth/signin
+* [x] Login user with POST /auth/signin
   * [x] Validate the user
   * [x] Check if username in db 
     * [x] Compare password with hashed in db 
     * [x] Create and sign a JWT
       * [x] Respond with JWT 
+* [x] If a logged in user - signup, signin redirect to dashboard
+* [x] If a non logged in user visits dashboard - redirect to sigin
+* [] Show username in dashboard
+* [] After sign up, immediately login
+* [] Have one protected route on the backend
+  * [] Only logged in users can request this route 

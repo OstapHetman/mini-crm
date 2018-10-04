@@ -6,6 +6,14 @@
         <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
         <v-toolbar-title class="white--text">CRM System</v-toolbar-title>
         <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-btn flat to="signup">
+            signup
+          </v-btn>
+          <v-btn flat to="signin">
+            sigin
+          </v-btn>
+        </v-toolbar-items>
       </v-toolbar>
       <!-- End Toolbar -->
       <main>

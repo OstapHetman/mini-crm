@@ -107,10 +107,10 @@ export default {
             }
           })
           .then(result => {
-            console.log(result);
+            localStorage.token = result.token;
             setTimeout(() => {
               this.signingIn = false;
-              // this.$router.push("/dashboard");
+              this.$router.push("/dashboard");
             }, 1000);
           })
           .catch(error => {
