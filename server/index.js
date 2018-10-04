@@ -4,6 +4,8 @@ const cors = require('cors')
 
 const app = express();
 
+const middlewares = require('./auth/middlewares');
+
 const auth = require('./auth')
 
 app.use(volleyball);
@@ -11,10 +13,12 @@ app.use(cors({
   origin: 'http://localhost:8080'
 }))
 app.use(express.json());
+app.use(middlewares.checkTokenSetUser)
 
 app.get('/', (req, res) => {
   res.json({
-    message: '🦄🌈✨Hello World! 🌈✨🦄'
+    message: '🦄🌈✨Hello World! 🌈✨🦄',
+    user: req.user
   });
 });
 
