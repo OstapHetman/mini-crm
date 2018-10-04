@@ -34,6 +34,6 @@
 * [x] If a logged in user - signup, signin redirect to dashboard
 * [x] If a non logged in user visits dashboard - redirect to sigin
 * [] Show username in dashboard
-* [] After sign up, immediately login
+* [x] After sign up, immediately login
 * [] Have one protected route on the backend
   * [] Only logged in users can request this route 

@@ -155,10 +155,11 @@ export default {
               });
             }
           })
-          .then(user => {
+          .then(result => {
+            localStorage.token = result.token;
             setTimeout(() => {
               this.signingUp = false;
-              this.$router.push("/signin");
+              this.$router.push("/dashboard");
             }, 1000);
           })
           .catch(error => {
