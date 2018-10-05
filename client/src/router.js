@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import SignUp from './views/SignUp.vue';
 import SignIn from './views/SignIn.vue';
 import Dashboard from './views/Dashboard.vue';
+import ViewNotes from './views/ViewNotes.vue';
 
 Vue.use(Router);
 
@@ -39,10 +40,23 @@ export default new Router({
           next();
         }
       }
-    }, {
+    },
+    {
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
+      beforeEnter: (to, from, next) => {
+        if (!localStorage.token) {
+          next('/signin')
+        } else {
+          next();
+        }
+      }
+    },
+    {
+      path: '/notes',
+      name: 'notes',
+      component: ViewNotes,
       beforeEnter: (to, from, next) => {
         if (!localStorage.token) {
           next('/signin')
