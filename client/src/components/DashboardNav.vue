@@ -29,23 +29,23 @@
       <!-- End Menu Item -->
 
       <!-- Start Menu Item -->
-      <v-list-tile to="notes">
+      <v-list-tile to="services">
         <v-list-tile-action>
           <v-icon>notes</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>View Notes</v-list-tile-title>
+          <v-list-tile-title>View Services</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
        <!-- End Menu Item -->
         
       <!-- Start Menu Item -->
-      <v-list-tile to="add-note">
+      <v-list-tile to="add-service">
         <v-list-tile-action>
           <v-icon>note_add</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>Add Note</v-list-tile-title>
+          <v-list-tile-title>Add Service</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
        <!-- End Menu Item -->
@@ -75,7 +75,7 @@
     </v-list>
   </v-navigation-drawer>
     <!-- Start Toolbar -->
-    <v-toolbar dark color="purple darken-1" app>
+    <v-toolbar dark color="indigo" app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">
         <router-link to="dashboard" tag="span" style="cursor: pointer">

@@ -4,7 +4,7 @@
       <main class="mt-5">
         <router-view/>
       </main>
-      <v-footer color="purple" app>
+      <v-footer color="indigo" app>
         <v-container class="my-0">
           <p class="white--text text-xs-center mb-0">CRM &copy; 2018</p>
         </v-container>

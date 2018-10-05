@@ -4,7 +4,8 @@ import Home from './views/Home.vue';
 import SignUp from './views/SignUp.vue';
 import SignIn from './views/SignIn.vue';
 import Dashboard from './views/Dashboard.vue';
-import ViewNotes from './views/ViewNotes.vue';
+import ViewServices from './views/ViewServices.vue';
+import AddNewService from './views/AddNewService.vue';
 
 Vue.use(Router);
 
@@ -23,11 +24,11 @@ export default new Router({
       component: SignUp,
       beforeEnter: (to, from, next) => {
         if (localStorage.token) {
-          next('/dashboard')
+          next('/dashboard');
         } else {
           next();
         }
-      }
+      },
     },
     {
       path: '/signin',
@@ -35,11 +36,11 @@ export default new Router({
       component: SignIn,
       beforeEnter: (to, from, next) => {
         if (localStorage.token) {
-          next('/dashboard')
+          next('/dashboard');
         } else {
           next();
         }
-      }
+      },
     },
     {
       path: '/dashboard',
@@ -47,23 +48,35 @@ export default new Router({
       component: Dashboard,
       beforeEnter: (to, from, next) => {
         if (!localStorage.token) {
-          next('/signin')
+          next('/signin');
         } else {
           next();
         }
-      }
+      },
     },
     {
-      path: '/notes',
-      name: 'notes',
-      component: ViewNotes,
+      path: '/services',
+      name: 'services',
+      component: ViewServices,
       beforeEnter: (to, from, next) => {
         if (!localStorage.token) {
-          next('/signin')
+          next('/signin');
         } else {
           next();
         }
-      }
-    }
+      },
+    },
+    {
+      path: '/add-service',
+      name: 'add-service',
+      component: AddNewService,
+      beforeEnter: (to, from, next) => {
+        if (!localStorage.token) {
+          next('/signin');
+        } else {
+          next();
+        }
+      },
+    },
   ],
 });

@@ -1,8 +1,6 @@
 <template>
   <v-container>
     <Navigation :username="user.username" />
-    <h1>Here is Dashboard</h1>
-    <AddNewNote />>
   </v-container>
 </template>
 
@@ -10,12 +8,10 @@
 const API_URL = "http://localhost:5000/";
 
 import Navigation from "@/components/DashboardNav";
-import AddNewNote from "@/components/AddNewNote";
 
 export default {
   components: {
-    Navigation,
-    AddNewNote
+    Navigation
   },
   data: () => ({
     user: null

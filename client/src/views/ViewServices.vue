@@ -3,7 +3,7 @@
     <v-flex xs12 sm8 md6>
       <v-card >
         <v-toolbar color="purple" dark>
-          <v-toolbar-title>Notes</v-toolbar-title>
+          <v-toolbar-title>Services</v-toolbar-title>
         </v-toolbar>
         <v-list v-for="note in notes" :key="note._id" class="px-4">
           <v-list-tile-content>

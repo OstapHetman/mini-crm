@@ -5,7 +5,9 @@ const db = require('../db/connection');
 const notes = db.get('notes');
 
 const schema = Joi.object().keys({
-  title: Joi.string().trim().max(40).required(),
+  title: Joi.string().trim().required(),
+  price: Joi.string().trim().required(),
+  featuresOfService: Joi.array(),
   body: Joi.string().trim().required(),
 });
 
@@ -36,6 +38,7 @@ router.post('/', (req, res) => {
   } else {
     // create error
     const error = new Error(result.error);
+    console.log(result.error)
     res.status(422);
     next(error);
   }
