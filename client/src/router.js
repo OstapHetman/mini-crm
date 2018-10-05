@@ -6,6 +6,7 @@ import SignIn from './views/SignIn.vue';
 import Dashboard from './views/Dashboard.vue';
 import ViewServices from './views/ViewServices.vue';
 import AddNewService from './views/AddNewService.vue';
+import UserProfile from './views/UserProfile.vue';
 
 Vue.use(Router);
 
@@ -70,6 +71,18 @@ export default new Router({
       path: '/add-service',
       name: 'add-service',
       component: AddNewService,
+      beforeEnter: (to, from, next) => {
+        if (!localStorage.token) {
+          next('/signin');
+        } else {
+          next();
+        }
+      },
+    },
+    {
+      path: '/profile',
+      name: 'user-profile',
+      component: UserProfile,
       beforeEnter: (to, from, next) => {
         if (!localStorage.token) {
           next('/signin');
