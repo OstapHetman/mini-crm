@@ -55,10 +55,10 @@
 	* [x] Title
 	* [x] Description
 * [] POST /api/v1/notes
-	* [] Must be logged in
+	* [x] Must be logged in
 	* [] Logged in Users Can Create Notes
-		* [] Title
-		* [] Description -- markdown
+		* [x] Title
+		* [x] Description -- markdown
 		* [] Set user_id on server with logged in users id
 * [] GET /api/v1/notes
 	* [] Must be logged in

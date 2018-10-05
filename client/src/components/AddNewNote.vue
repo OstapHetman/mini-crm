@@ -9,13 +9,13 @@
         </v-card-title>
         <v-form @submit.prevent="addNote()">
           <v-text-field
-            v-model="note.title"
+            v-model="newNote.title"
             :counter="40"
             label="Enter a title"
             required
           ></v-text-field>
           <v-textarea
-            v-model="note.body"
+            v-model="newNote.body"
             label="Enter your note"
             required
           ></v-textarea>
@@ -33,16 +33,17 @@ const NOTE_URL = "http://localhost:5000/api/v1/notes";
 
 export default {
   data: () => ({
-    note: {
+    newNote: {
       title: "",
       body: ""
-    }
+    },
+    notes: []
   }),
   methods: {
     addNote() {
       fetch(NOTE_URL, {
         method: "POST",
-        body: JSON.stringify(this.note),
+        body: JSON.stringify(this.newNote),
         headers: {
           "content-type": "application/json",
           authorization: `Bearer ${localStorage.token}`
@@ -52,7 +53,11 @@ export default {
           res.json();
         })
         .then(note => {
-          console.log(note);
+          this.notes.push(note);
+          this.newNote = {
+            title: "",
+            body: ""
+          };
         });
     }
   }
