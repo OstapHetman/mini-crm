@@ -51,9 +51,9 @@
 		* [x] else - send an unauthorized error message
 	* [x] redirect to login form
 * [x] Logged in users can only see their page
-* [] Create notes form on client
-	* [] Title
-	* [] Description
+* [x] Create notes form on client
+	* [x] Title
+	* [x] Description
 * [] POST /api/v1/notes
 	* [] Must be logged in
 	* [] Logged in Users Can Create Notes
