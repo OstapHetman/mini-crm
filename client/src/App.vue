@@ -1,27 +1,23 @@
 <template>
   <div id="app">
     <v-app>
-      <!-- Start Toolbar -->
-      <v-toolbar dark color="purple darken-1">
-        <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
-        <v-toolbar-title class="white--text">CRM System</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-          <v-btn flat to="signup">
-            signup
-          </v-btn>
-          <v-btn flat to="signin">
-            sigin
-          </v-btn>
-        </v-toolbar-items>
-      </v-toolbar>
-      <!-- End Toolbar -->
-      <main>
+      <main class="mt-5">
         <router-view/>
       </main>
+      <v-footer color="purple" app>
+        <v-container class="my-0">
+          <p class="white--text text-xs-center mb-0">CRM &copy; 2018</p>
+        </v-container>
+      </v-footer>
     </v-app>
   </div>
 </template>
+<script>
+export default {
+  data: () => ({})
+};
+</script>
+
 
 <style>
 </style>
