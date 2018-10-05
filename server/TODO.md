@@ -39,18 +39,18 @@
   * [] Only logged in users can request this route 
 
 ### Authorization:
-* [] Visitors can only see the homepage
-	* [] checkTokenSetUser middleware
-		* [] get token from Authorization header
-			* [] if defined ---
-				* [] Verify the token with the token secret
-				* [] Set req.user to be the decoded verified payload
-			* [] else - move along
-	* [] isLoggedIn middleware
-		* [] if req.user is set - move along
-		* [] else - send an unauthorized error message
-	* [] redirect to login form
-* [] Logged in users can only see their page
+* [x] Visitors can only see the homepage
+	* [x] checkTokenSetUser middleware
+		* [x] get token from Authorization header
+			* [x] if defined ---
+				* [x] Verify the token with the token secret
+				* [x] Set req.user to be the decoded verified payload
+			* [x] else - move along
+	* [x] isLoggedIn middleware
+		* [x] if req.user is set - move along
+		* [x] else - send an unauthorized error message
+	* [x] redirect to login form
+* [x] Logged in users can only see their page
 * [] Create notes form on client
 	* [] Title
 	* [] Description
